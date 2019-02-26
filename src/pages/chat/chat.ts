@@ -31,7 +31,7 @@ export class ChatPage {
   unirseAlChat() {
     this.socket.connect();
     this.socket.emit('set-nickname', this.nickname);
-    this.navCtrl.push('ChatRoomPage', { nickname: this.nickname });
+    this.navCtrl.push('ChatroomPage', { nickname: this.nickname });
   }
 
 }

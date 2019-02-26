@@ -36,7 +36,7 @@ usar https://ialechat.herokuapp.com/
 
 ### 4)Armar página para unirse al chat.
 
-### 5)Agregar y armar página chatroom, utilizando observables.
+### 5)Agregar y armar página chatroom, utilizando observables y componente Toast.
 
 ```
 $ ionic g page chatroom
