@@ -37,28 +37,30 @@ usar https://ialechat.herokuapp.com/
 ### 4)Armar página para unirse al chat.
 
 ### 5)Agregar y armar página chatroom, utilizando observables y componente Toast.
-
 ```
 $ ionic g page chatroom
 ```
 
 ### 6)Usar storage para manejar el nickname.
-
 ```
 $ ionic cordova plugin add cordova-plugin-nativestorage
 $ npm install --save @ionic-native/native-storage@4
 ```
 
 ### 7)Permitir tomar fotos desde el home.
-
 ```
 $ ionic cordova plugin add cordova-plugin-camera --variable CAMERA_USAGE_DESCRIPTION="Permitenos usar la camara" --variable PHOTOLIBRARY_USAGE_DESCRIPTION="permitenos usar la libreria"
 $ npm install --save @ionic-native/camera@4
 ```
 
 ### 8)Agregar una nueva página que muestre la geolocalización actual y en tiempo real.
-
 ```
 $ ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="usaremos tu ubicacion"
 $ npm install --save @ionic-native/geolocation@4
+```
+
+### 9)Mostrar la dirección de la ubicación
+```
+$ ionic cordova plugin add cordova-plugin-nativegeocoder
+$ npm install --save @ionic-native/native-geocoder@4
 ```

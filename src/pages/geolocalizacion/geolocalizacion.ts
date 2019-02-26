@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Geolocation } from '@ionic-native/geolocation';
 
+import { NativeGeocoder } from '@ionic-native/native-geocoder';
+
 /**
  * Generated class for the GeolocalizacionPage page.
  *
@@ -25,7 +27,9 @@ import { Geolocation } from '@ionic-native/geolocation';
  	observarPosicion: any;
  	bagColor: string;
 
- 	constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
+ 	direcion: string;
+
+ 	constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder) {
  		this.posicionActual = {latitude: 0, longitude: 0}
  		this.posicion = {latitude: 0, longitude: 0}
  		this.obtenerPosicionActual();
@@ -59,6 +63,16 @@ import { Geolocation } from '@ionic-native/geolocation';
  	pararSeguimiento() {
  		this.observarPosicion.unsubscribe();
  		this.bagColor = 'danger';
+ 	}
+
+ 	obtenerDireccion() {
+
+		this.nativeGeocoder.reverseGeocode(this.posicionActual.latitude, this.posicionActual.longitude)
+		  .then((data : any) => {
+		  	this.direcion = data[0];
+		  	console.log(this.direcion)
+		})
+		  .catch((error: any) => console.error(error));
  	}
 
 }

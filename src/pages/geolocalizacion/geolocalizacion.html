@@ -10,6 +10,8 @@
 
 <ion-content padding>
 
+	<ion-list no-lines>
+
 	<ion-item>
 		<ion-icon name="pin" item-start></ion-icon>
 		Actual
@@ -29,5 +31,14 @@
 	</ion-item>
 	<button ion-button full color="danger" (click)="pararSeguimiento()">Parar de Seguir</button>
 	<button ion-button full color="secondary" (click)="posicionTiempoReal()">Iniciar Seguimiento</button>
+
+	<ion-item>
+		<ion-icon name="locate" item-start></ion-icon>
+		<h2>Dirección</h2>
+    	<p *ngIf="direcion">{{ direcion.thoroughfare }} {{ direcion.subThoroughfare }}, {{ direcion.locality }}</p>
+	</ion-item>
+	<button ion-button full color="light" (click)="obtenerDireccion()">Obtener Dirección</button>
+
+</ion-list>
 
 </ion-content>
