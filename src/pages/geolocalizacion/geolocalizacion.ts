@@ -5,6 +5,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
+import { TrackerProvider } from '../../providers/tracker/tracker';
+
 /**
  * Generated class for the GeolocalizacionPage page.
  *
@@ -29,7 +31,8 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
  	direcion: string;
 
- 	constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder) {
+ 	constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder, public locationTracker: TrackerProvider
+ 		) {
  		this.posicionActual = {latitude: 0, longitude: 0}
  		this.posicion = {latitude: 0, longitude: 0}
  		this.obtenerPosicionActual();
@@ -67,12 +70,20 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
  	obtenerDireccion() {
 
-		this.nativeGeocoder.reverseGeocode(this.posicionActual.latitude, this.posicionActual.longitude)
-		  .then((data : any) => {
-		  	this.direcion = data[0];
-		  	console.log(this.direcion)
-		})
-		  .catch((error: any) => console.error(error));
+ 		this.nativeGeocoder.reverseGeocode(this.posicionActual.latitude, this.posicionActual.longitude)
+ 		.then((data : any) => {
+ 			this.direcion = data[0];
+ 			console.log(this.direcion)
+ 		})
+ 		.catch((error: any) => console.error(error));
  	}
 
-}
+ 	iniciarBackgroundGeolocation(){
+ 		this.locationTracker.startTracking();
+ 	}
+
+ 	pararBackgroundGeolocation(){
+ 		this.locationTracker.stopTracking();
+ 	}
+
+ }

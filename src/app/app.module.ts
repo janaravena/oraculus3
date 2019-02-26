@@ -14,6 +14,9 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import { Camera } from '@ionic-native/camera';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
+import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
+
+import { TrackerProvider } from '../providers/tracker/tracker';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,9 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
     NativeStorage,
     Camera,
     Geolocation,
-    NativeGeocoder
+    NativeGeocoder,
+    BackgroundGeolocation,
+    TrackerProvider
   ]
 })
 export class AppModule {}
