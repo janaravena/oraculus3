@@ -4,9 +4,12 @@ import {Geolocation, Geoposition} from '@ionic-native/geolocation';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 
+import { Socket } from 'ng-socket-io';
+import { NativeStorage } from '@ionic-native/native-storage';
+
 interface location {
-  lat: number;
-  lng: number;
+	lat: number;
+	lng: number;
 }
 
 
@@ -20,10 +23,12 @@ export class TrackerProvider {
 	public locations2: location[] = [];
 	public locationsAll: location[] = [];
 
-
 	constructor(public zone: NgZone,
 		public backgroundGeolocation: BackgroundGeolocation,
-		public geolocation: Geolocation) {
+		public geolocation: Geolocation,
+		private socket: Socket,
+		private nativeStorage: NativeStorage
+		) {
 
 	}
 
@@ -53,6 +58,7 @@ export class TrackerProvider {
 				};
 				this.locations.push(newLocation);
 				this.locationsAll.push(newLocation);
+				this.sendMessage('latitud1: ' + newLocation.lat + ', longitud1: ' + newLocation.lng)
 			});
 		}, (err) => {
 			console.log(err);
@@ -75,6 +81,7 @@ export class TrackerProvider {
 			};
 			this.locations2.push(newLocation);
 			this.locationsAll.push(newLocation);
+			this.sendMessage('latitud2: ' + newLocation.lat + ', longitud2: ' + newLocation.lng)
 
 			this.zone.run(() => {
 				console.warn("ZONE 2");
@@ -96,4 +103,27 @@ export class TrackerProvider {
 		this.watch.unsubscribe();
 
 	}
+
+	unirseAlChat() {
+
+		this.nativeStorage.getItem('nickname')
+		.then(
+			data => {
+				this.socket.connect();
+				this.socket.emit('set-nickname', data.valor);
+			},
+			error => {
+				console.error('Error al recuperar item: ', error)
+				this.socket.connect();
+				this.socket.emit('set-nickname', 'geo loca seg');
+			} 
+			);
+
+	}
+
+	sendMessage(mensaje: string) {
+		this.socket.emit('add-message', { text: mensaje });
+		this.message = '';
+	}
+
 }

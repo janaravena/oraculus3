@@ -79,3 +79,5 @@ $ ionic g provider tracker
 ```
 
 https://stackoverflow.com/questions/54451976/background-geolocation-isnt-a-observable
+
+### 10)Enviar seguimiento de posición por chat.
