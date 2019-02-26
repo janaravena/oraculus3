@@ -31,3 +31,13 @@ $ ionic g component encabezado
 ```
 $ npm install ng-socket-io --save
 ```
+
+usar https://ialechat.herokuapp.com/
+
+### 4)Armar página para unirse al chat.
+
+### 5)Agregar y armar página chatroom, utilizando observables.
+
+```
+$ ionic g page chatroom
+```
