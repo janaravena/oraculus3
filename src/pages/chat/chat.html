@@ -10,4 +10,10 @@
 
 <ion-content padding>
 
+  <ion-item>
+    <ion-label stacked>Elegir Nickname</ion-label>
+    <ion-input type="text" [(ngModel)]="nickname" placeholder="Nickname"></ion-input>
+  </ion-item>
+  <button ion-button full (click)="unirseAlChat()" [disabled]="nickname === ''">Unirse al chat como {{ nickname }}</button>
+
 </ion-content>
