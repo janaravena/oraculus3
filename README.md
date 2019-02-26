@@ -53,5 +53,12 @@ $ npm install --save @ionic-native/native-storage@4
 
 ```
 $ ionic cordova plugin add cordova-plugin-camera --variable CAMERA_USAGE_DESCRIPTION="Permitenos usar la camara" --variable PHOTOLIBRARY_USAGE_DESCRIPTION="permitenos usar la libreria"
-$ npm install @ionic-native/camera --save
+$ npm install --save @ionic-native/camera@4
+```
+
+### 8)Agregar una nueva página que muestre la geolocalización actual y en tiempo real.
+
+```
+$ ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="usaremos tu ubicacion"
+$ npm install --save @ionic-native/geolocation@4
 ```

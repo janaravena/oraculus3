@@ -12,6 +12,7 @@ const config: SocketIoConfig = { url: 'https://ialechat.herokuapp.com/', options
 
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Camera } from '@ionic-native/camera';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { Camera } from '@ionic-native/camera';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     NativeStorage,
-    Camera
+    Camera,
+    Geolocation
   ]
 })
 export class AppModule {}
