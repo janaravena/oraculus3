@@ -48,3 +48,10 @@ $ ionic g page chatroom
 $ ionic cordova plugin add cordova-plugin-nativestorage
 $ npm install --save @ionic-native/native-storage@4
 ```
+
+### 7)Permitir tomar fotos desde el home.
+
+```
+$ ionic cordova plugin add cordova-plugin-camera --variable CAMERA_USAGE_DESCRIPTION="Permitenos usar la camara" --variable PHOTOLIBRARY_USAGE_DESCRIPTION="permitenos usar la libreria"
+$ npm install @ionic-native/camera --save
+```

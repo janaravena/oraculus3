@@ -9,4 +9,7 @@
     Ejemplos avanzados con ionic
   </p>
 
+  <button ion-button block (click)="tomarFoto()">Toma una foto</button>
+  <img [src]="image" *ngIf="image" />
+
 </ion-content>
