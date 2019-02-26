@@ -16,4 +16,9 @@
   </ion-item>
   <button ion-button full (click)="unirseAlChat()" [disabled]="nickname === ''">Unirse al chat como {{ nickname }}</button>
 
+  <ion-item>
+  <ion-label>Recordar</ion-label>
+  <ion-toggle color="danger" [(ngModel)]="recordar" (ionChange)="cambiaToggle()" ></ion-toggle>
+</ion-item>
+
 </ion-content>

@@ -41,3 +41,10 @@ usar https://ialechat.herokuapp.com/
 ```
 $ ionic g page chatroom
 ```
+
+### 6)Usar storage para manejar el nickname.
+
+```
+$ ionic cordova plugin add cordova-plugin-nativestorage
+$ npm install --save @ionic-native/native-storage@4
+```
