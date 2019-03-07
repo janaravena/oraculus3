@@ -43,7 +43,7 @@ export class TrackerProvider {
     };
 
 		this.backgroundGeolocation.configure(config)
-  		.subscribe((location: BackgroundGeolocationResponse) => {
+  		  .subscribe((location: BackgroundGeolocationResponse) => {
 
 			console.log('BackgroundGeolocation:  ' + location.latitude + ',' + location.longitude);
 

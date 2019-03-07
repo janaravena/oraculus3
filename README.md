@@ -1,5 +1,19 @@
 # oraculus
 
+##Comandos de consola
+
+Compilar e instalar la app para debugear
+
+```
+$ ionic cordova run android --device
+```
+
+Compilar la app para debugear
+```
+$ ionic cordova build android
+```
+
+
 ## Ejercicios Modulo 3
 
 ### 1)Crear una app con sidemenu.
@@ -41,9 +55,6 @@ usar https://ialechat.herokuapp.com/
 $ ionic g page chatroom
 ```
 
-**ionic cordova build android**
-**ionic cordova run android --device**
-
 ### 6)Usar storage para manejar el nickname.
 ```
 $ ionic cordova plugin add cordova-plugin-nativestorage
@@ -69,18 +80,12 @@ $ npm install --save @ionic-native/native-geocoder@4
 ```
 
 ### 9)Listar seguimiento de posición en segundo plano.
-```
-$ ionic cordova plugin add cordova-plugin-mauron85-background-geolocation@alpha
-$ npm install --save @ionic-native/background-geolocation@4
-```
 
 ```
-$ ionic cordova plugin add cordova-plugin-mauron85-background-geolocation@2.2.5
-$ npm install --save @ionic-native/background-geolocation@3
+$ ionic cordova plugin add cordova-plugin-mauron85-background-geolocation@alpha
+$ npm install --save @ionic-native/background-geolocation@3.12.1
 
 $ ionic g provider tracker
 ```
-
-https://stackoverflow.com/questions/54451976/background-geolocation-isnt-a-observable
 
 ### 10)Enviar seguimiento de posición por chat.
