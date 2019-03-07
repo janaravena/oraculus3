@@ -1,5 +1,5 @@
 import {Injectable, NgZone} from '@angular/core';
-import {BackgroundGeolocation, BackgroundGeolocationConfig} from '@ionic-native/background-geolocation';
+import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation';
 import {Geolocation, Geoposition} from '@ionic-native/geolocation';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
@@ -34,15 +34,16 @@ export class TrackerProvider {
 
 	public startTracking() {
 
-		let config: BackgroundGeolocationConfig = {
-			desiredAccuracy: 0,
-			stationaryRadius: 20,
-			distanceFilter: 10,
-			debug: true,
-			interval: 10000
-		};
+		const config: BackgroundGeolocationConfig = {
+            desiredAccuracy: 10,
+            stationaryRadius: 20,
+            distanceFilter: 30,
+            debug: true, //  enable this hear sounds for background-geolocation life-cycle.
+            stopOnTerminate: false, // enable this to clear background location settings when the app terminates
+    };
 
-		this.backgroundGeolocation.configure(config).subscribe((location) => {
+		this.backgroundGeolocation.configure(config)
+  		.subscribe((location: BackgroundGeolocationResponse) => {
 
 			console.log('BackgroundGeolocation:  ' + location.latitude + ',' + location.longitude);
 
@@ -109,6 +110,7 @@ export class TrackerProvider {
 		this.nativeStorage.getItem('nickname')
 		.then(
 			data => {
+				console.log('nickname: ' + data.valor);
 				this.socket.connect();
 				this.socket.emit('set-nickname', data.valor);
 			},
@@ -123,7 +125,6 @@ export class TrackerProvider {
 
 	sendMessage(mensaje: string) {
 		this.socket.emit('add-message', { text: mensaje });
-		this.message = '';
 	}
 
 }
