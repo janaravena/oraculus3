@@ -34,16 +34,18 @@ export class TrackerProvider {
 
 	public startTracking() {
 
+		this.unirseAlChat();
+
 		const config: BackgroundGeolocationConfig = {
-            desiredAccuracy: 10,
-            stationaryRadius: 20,
-            distanceFilter: 30,
-            debug: true, //  enable this hear sounds for background-geolocation life-cycle.
-            stopOnTerminate: false, // enable this to clear background location settings when the app terminates
-    };
+			desiredAccuracy: 10,
+			stationaryRadius: 20,
+			distanceFilter: 30,
+			debug: true, //  enable this hear sounds for background-geolocation life-cycle.
+			stopOnTerminate: false, // enable this to clear background location settings when the app terminates
+		};
 
 		this.backgroundGeolocation.configure(config)
-  		  .subscribe((location: BackgroundGeolocationResponse) => {
+		.subscribe((location: BackgroundGeolocationResponse) => {
 
 			console.log('BackgroundGeolocation:  ' + location.latitude + ',' + location.longitude);
 
@@ -93,6 +95,7 @@ export class TrackerProvider {
 	}
 
 	public stopTracking() {
+		this.salirDelChat();
 		console.log('stopTracking');
 		console.warn("STOP TRACKING");
 		console.warn(this.locations.length);
@@ -119,12 +122,15 @@ export class TrackerProvider {
 				this.socket.connect();
 				this.socket.emit('set-nickname', 'geo loca seg');
 			} 
-			);
-
+		);
 	}
 
 	sendMessage(mensaje: string) {
 		this.socket.emit('add-message', { text: mensaje });
+	}
+
+	salirDelChat() {
+		this.socket.disconnect();
 	}
 
 }
